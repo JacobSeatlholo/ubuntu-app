@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { PROGRAM, RESOURCES } from "@/lib/program-data";
 
 export function AppFooter() {
@@ -7,12 +8,15 @@ export function AppFooter() {
     <footer className="mt-auto border-t border-uw-teal/15 bg-uw-navy text-white">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-uw-teal text-lg">
-              ❄
-            </span>
-            <span className="text-sm font-extrabold uppercase tracking-widest">
-              Ubuntu Wellness
+          <p className="flex items-center">
+            <span className="flex h-12 w-auto items-center overflow-hidden rounded-lg bg-white px-3 py-1.5">
+              <Image
+                src="/images/ubuntu-logo.png"
+                alt="Ubuntu Wellness — Health Happiness Harmony"
+                width={128}
+                height={36}
+                className="h-auto w-32 object-contain"
+              />
             </span>
           </p>
           <p className="mt-3 max-w-xs text-xs leading-relaxed text-white/70">

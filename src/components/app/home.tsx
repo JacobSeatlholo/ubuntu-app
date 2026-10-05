@@ -15,6 +15,16 @@ import {
 } from "@/lib/program-data";
 import type { TabId } from "./nav";
 
+// Site benefit icons from ubuntuwellness.com/diabetes-reversal
+const SITE_BENEFIT_ICONS: Record<string, string> = {
+  "Reduce risk of mortality from obesity": "/images/icon-1.png",
+  "Lowers cholesterol": "/images/icon-2.png",
+  "Reduce risk of heart disease": "/images/icon-4.png",
+  "Lowers chances of certain cancers": "/images/icon-3.png",
+  "Manages diabetes by reducing A1C levels": "/images/icon-5.png",
+  "Metabolism benefits": "/images/icon-7.png",
+};
+
 export default function HomeSection({
   completedCount,
   onNavigate,
@@ -213,11 +223,23 @@ export default function HomeSection({
         <Card className="border-uw-green/25 bg-uw-green/5">
           <CardContent className="p-6">
             <h2 className="text-lg font-bold text-uw-navy">Clinically proven outcomes</h2>
-            <ul className="mt-3 space-y-2">
+            <ul className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2">
               {SITE_STATS_BENEFITS.map((b) => (
-                <li key={b} className="flex items-start gap-2 text-sm text-uw-navy">
-                  <span className="mt-0.5 text-uw-green" aria-hidden>
-                    ✓
+                <li
+                  key={b}
+                  className="flex items-center gap-2.5 rounded-xl bg-white p-2.5 text-sm font-medium text-uw-navy shadow-sm"
+                >
+                  <span
+                    className="relative h-10 w-10 shrink-0 overflow-hidden rounded-lg"
+                    aria-hidden
+                  >
+                    <Image
+                      src={SITE_BENEFIT_ICONS[b] ?? "/images/icon-7.png"}
+                      alt=""
+                      fill
+                      sizes="40px"
+                      className="object-contain"
+                    />
                   </span>
                   {b}
                 </li>
@@ -231,6 +253,33 @@ export default function HomeSection({
             </p>
           </CardContent>
         </Card>
+      </section>
+
+      {/* ── Research initiative ─────────────────────────── */}
+      <section className="overflow-hidden rounded-3xl border border-uw-teal/15 bg-white shadow-sm">
+        <div className="relative aspect-[21/9] w-full sm:aspect-[2/1]">
+          <Image
+            src="/images/Diabetes-reversal-333.jpg"
+            alt="Fresh plant-based whole foods — the foundation of the Ubuntu Wellness diabetes reversal program"
+            fill
+            sizes="(max-width: 1024px) 100vw, 1024px"
+            className="object-cover"
+          />
+        </div>
+        <div className="p-6 sm:p-8">
+          <h2 className="text-lg font-bold text-uw-navy">
+            Ubuntu Wellness × North-West University research initiative
+          </h2>
+          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+            This initiative proposed between Ubuntu Wellness and the North West University
+            is meant to research and document the scientific connection between diet and
+            nutrition and how a plant-based diet can help fight lifestyle diseases in
+            South Africa. Lifestyle-related diseases such as diabetes are responsible for
+            24.5% of deaths of all South Africans — and by 2045 the International Diabetes
+            Federation projects around 47 million people living with diabetes in the
+            African region alone.
+          </p>
+        </div>
       </section>
 
       {/* ── Quick nav ────────────────────────────────────── */}
